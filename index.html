@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Year Eve</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">
+        <h1>New Year Eve</h1>
+      </div>
+      <div class="time">
+        <div class="days">
+          <h1 id="days">0</h1>
+          <p>Days</p>
+        </div>
+        <div class="days">
+          <h1 id="hours">0</h1>
+          <p>Hours</p>
+        </div>
+        <div class="days">
+          <h1 id="mins">0</h1>
+          <p>Mins</p>
+        </div>
+        <div class="days">
+          <h1 id="seconds">0</h1>
+          <p>Seconds</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const newYear = "1 jan 2022";
+      function countDown() {
+        const newYearDate = new Date(newYear);
+        const currentDate = new Date();
+
+        const totalseconds = Math.floor(newYearDate - currentDate) / 1000;
+
+        const seconds = Math.floor(totalseconds) % 60;
+
+        const mins = Math.floor(totalseconds / 60) % 60;
+
+        const hours = Math.floor(totalseconds / 3600) % 24;
+
+        const days = Math.floor(totalseconds / 3600 / 24);
+
+        console.log(days, hours, mins, seconds);
+
+        document.getElementById("seconds").innerHTML = formatTime(seconds);
+        document.getElementById("mins").innerHTML = formatTime(mins);
+        document.getElementById("hours").innerHTML = formatTime(hours);
+        document.getElementById("days").innerHTML = days;
+      }
+      countDown();
+      setInterval(countDown, 1000);
+
+      function formatTime(time) {
+        if (time < 10) {
+          time = "0" + time;
+        }
+        return time;
+      }
+    </script>
+  </body>
+</html>
